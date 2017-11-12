@@ -1,0 +1,9 @@
+<h3>Hello, <%= "#{@user.name}" %>!</h3>
+<ul>
+<li><strong>Mood:</strong> <%= @user.mood %></li>
+<li><strong>Tickets:</strong> <%= @user.tickets %></li>
+<li><strong>Height:</strong> <%= @user.height %> inches</li>
+<% if @user.admin? %>
+    <li><strong>~*ADMIN*~</strong></li>
+<% end %>
+</ul>

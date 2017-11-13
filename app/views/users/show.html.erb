@@ -7,3 +7,5 @@
     <li><strong>~*ADMIN*~</strong></li>
 <% end %>
 </ul>
+<p><%= link_to "See attractions", attractions_path %> </p>
+<p><%= link_to "Log Out", signout_path, :method => :delete, data: { confirm: "Signout?" } %></p>

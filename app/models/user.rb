@@ -9,10 +9,14 @@ class User < ActiveRecord::Base
   validates_presence_of :name
 
   def mood
-    if self.nausea > self.happiness
-      "sad"
+    if self.nausea && self.happiness
+      if self.nausea > self.happiness
+        "sad"
+      else
+        "happy"
+      end
     else
-      "happy"
+      "unsure"
     end
   end
 

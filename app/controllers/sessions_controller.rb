@@ -6,16 +6,18 @@ class SessionsController < ApplicationController
     end
 
     def create
-        # @users = User.all
-        # binding.pry
         @user = User.find_by(name: params[:user][:name])
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
-            # binding.pry
-            redirect_to user_path(@user)
+            redirect_to @user
         else
             redirect_to signin_path
         end
+    end
+
+    def signout
+        session.delete :user_id
+        redirect_to '/'
     end
 
 end

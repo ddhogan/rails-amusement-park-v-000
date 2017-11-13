@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    
+    def index
+    end
+    
     def new
         @user = User.new
     end
@@ -14,7 +18,7 @@ class UsersController < ApplicationController
 
     def show
         if session.include? :user_id
-            @user = User.find_by(params[:id])
+            render :show
         else
             redirect_to '/'
         end
@@ -22,6 +26,10 @@ class UsersController < ApplicationController
 
     private
 
+    def set_user
+        @user = User.find(params[:id])
+    end
+    
     def user_params
         params.require(:user).permit(:name, :nausea, :happiness, :tickets, :height, :password, :admin)
     end
